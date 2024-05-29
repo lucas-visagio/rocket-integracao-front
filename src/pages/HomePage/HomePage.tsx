@@ -31,7 +31,7 @@ const HomePage = () => {
         setError("Erro ao carregar produtos.");
         setLoading(false);
       });
-  }, []);
+  }, [apiUrl]);
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#eff3f8] p-3 pt-20 sm:p-5">
