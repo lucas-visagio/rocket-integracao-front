@@ -14,10 +14,12 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:3000/product",
+      url: `${apiUrl}/product`,
       responseType: "json",
     })
       .then((response) => {
@@ -60,7 +62,7 @@ const HomePage = () => {
           <div>{error}</div>
         ) : (
           <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {products.map((product) => (
+            {products?.map((product) => (
               <ProductItem
                 key={product.id}
                 product={product}

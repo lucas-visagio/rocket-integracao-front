@@ -28,13 +28,15 @@ export const CartModal = ({
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   function close() {
     setIsOpen(false);
   }
 
   async function updateStock(productId: number, quantity: number) {
     try {
-      await axios.patch(`http://localhost:3000/product/${productId}`, {
+      await axios.patch(`${apiUrl}/product/${productId}`, {
         quantity: quantity,
       });
       setError(null);
